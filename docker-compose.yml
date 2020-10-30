@@ -6,6 +6,7 @@ services:
     ports:
       - ${IP}:80:80
     restart: always
+    env_file: .env
     volumes:
       - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
       - ./wp-app:/var/www/html
@@ -30,6 +31,7 @@ services:
   db:
     image: mysql:5.7
     restart: always
+    env_file: .env
     ports:
       - ${IP}:3306:3306
     command: [
@@ -48,3 +50,4 @@ services:
 volumes:
   db_data:
     driver: local
+
